@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(morgan('combined'));
 
 //ROUTES
-app.use('/sports', sportRoutes);
+app.use('/sport', sportRoutes);
 
 app.use((req,res,next) => {
     res.status(404).json({

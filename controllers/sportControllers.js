@@ -7,12 +7,11 @@ import{
 } from '../db/services/sportServices.js';
 import { sportSchema } from '../schemas/sportSchema.js';
 import { sportUpdateSchema } from '../schemas/sportUpdateSchema.js';
+import { generateError } from '../utils/generateError.js';
 
 export const createSportController = async (req,res,next) =>{
     try{
-        const validate = await sportSchema.validateAsync(req.body,{stripUnkmown: true});
-
-        console.log("Validate", validate);
+        const validate = await sportSchema.validateAsync(req.body,{stripUnkmown: true}); 
 
         const sport = await createSport(validate);
 
@@ -56,7 +55,9 @@ export const getSportByIdController = async (req,res,next) =>{
 export const updateSportController = async (req,res,next) =>{
     try{
         const { id } = req.params;
+        console.log(id);
         const validate = await sportUpdateSchema.validateAsync(req.body,{stripUnknown: true});
+        console.log(validate);
 
         const sport = await updateSport(id,validate);
 

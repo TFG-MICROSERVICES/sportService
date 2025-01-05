@@ -29,5 +29,7 @@ export const Sport = database.define("sport", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+},{
+    tableName: "Sports"
 });
 

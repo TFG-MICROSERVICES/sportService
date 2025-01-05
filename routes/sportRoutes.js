@@ -6,15 +6,15 @@ import {
     getSportByIdController,
     updateSportController
 } from '../controllers/sportControllers.js';
+import { validateApiKey } from '../middlewares/validateApiKey.js';
 
 
 const router = express.Router();
 
-router.post('/', createSportController);
-router.get('/', getSportsController);
-router.get('/:id', getSportsController);
-router.put('/:id', updateSportController);
-router.delete('/:id', deleteSportController);
-
+router.post('/',validateApiKey, createSportController);
+router.get('/',validateApiKey, getSportsController);
+router.get('/:id',validateApiKey, getSportsController);
+router.put('/:id',validateApiKey, updateSportController);
+router.delete('/:id',validateApiKey, deleteSportController);
 
 export default router;

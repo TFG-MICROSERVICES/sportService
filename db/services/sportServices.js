@@ -41,13 +41,15 @@ export const getSportById = async(id) =>{
     }
 }
 
-export const updateSport = async(id) =>{
+export const updateSport = async(id,data) =>{
     try{
-        const [updateRows] = await User.update(data,{
+        const [updateRows] = await Sport.update(data,{
             where:{
                 id: id
             }
         });
+
+        console.log(updateRows);
 
         if(updateRows === 0) generateError('Sport not updated',400);
 
@@ -67,8 +69,6 @@ export const deleteSport = async(id) =>{
                 id: id
             }
         });
-
-        if(!sport) generateError('Sport not deleted',400);
 
         return sport;
     }catch(error){
