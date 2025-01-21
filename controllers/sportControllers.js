@@ -7,7 +7,6 @@ import{
 } from '../db/services/sportServices.js';
 import { sportSchema } from '../schemas/sportSchema.js';
 import { sportUpdateSchema } from '../schemas/sportUpdateSchema.js';
-import { generateError } from '../utils/generateError.js';
 
 export const createSportController = async (req,res,next) =>{
     try{

@@ -24,7 +24,7 @@ module.exports = {
         defaultValue: false
       },
       image: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       minimum_players: {
