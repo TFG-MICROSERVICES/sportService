@@ -32,7 +32,7 @@ export default {
     database: process.env.PROD_DB_NAME,
     host: process.env.PROD_DB_HOSTNAME,
     port: process.env.PROD_DB_PORT,
-    dialect: 'mysql',
+    dialect: process.env.PROD_DB_DIALECT,
     dialectOptions: {
       bigNumberStrings: true,
     },
