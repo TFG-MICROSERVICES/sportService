@@ -25,7 +25,8 @@ export const createSportController = async (req,res,next) =>{
 
 export const getSportsController = async (req,res,next) =>{
     try{
-        const sports = await getSports();
+        const { search } = req.query;
+        const sports = await getSports(search);
 
         res.status(200).json({
             message: 'Sports found',

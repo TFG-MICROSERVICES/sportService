@@ -1,4 +1,5 @@
 import { Sport } from '../../models/sport.js';
+import { Op, where } from 'sequelize';
 import { generateError } from '../../utils/generateError.js';
 
 export const createSport = async (data) => {
@@ -15,9 +16,16 @@ export const createSport = async (data) => {
     }
 }
 
-export const getSports = async () =>{
+export const getSports = async (search) =>{
     try{
-        const sports = await Sport.findAll();
+        const sports = await Sport.findAll({
+            where : search ? {
+                [Op.or] : [
+                    {name: { [Op.like]: `%${search}%`}},
+                    {sport_id: { [Op.like]: `%${search}%`}}
+                ]
+            } : {}
+        });
 
         if(!sports) generateError('Sports not found',404);
 
