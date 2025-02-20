@@ -6,7 +6,7 @@ export const sportSchema = Joi.object({
         'string.base': 'name must be string',
         'string.max': 'name must be at most 255 characters',
     }),
-    description: Joi.string().allow(null,"").messages({
+    description: Joi.string().allow(null, '').messages({
         'any.required': 'description is required',
         'string.base': 'description must be string',
     }),
@@ -14,7 +14,7 @@ export const sportSchema = Joi.object({
         'any.required': 'status is required',
         'boolean.base': 'status must be boolean',
     }),
-    image: Joi.string().allow(null,"").messages({
+    image: Joi.string().allow(null, '').messages({
         'string.base': 'image must be string',
     }),
     minimum_players: Joi.number().required().messages({

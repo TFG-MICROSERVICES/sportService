@@ -6,81 +6,80 @@ export const createSport = async (data) => {
     try {
         console.log(data);
         const sport = await Sport.create(data);
-        
-        if(!sport) generateError('Error creating user', 500);
+
+        if (!sport) generateError('Error creating user', 500);
 
         return sport;
     } catch (error) {
         console.log(error);
-        generateError(error.message,error.status);
+        generateError(error.message, error.status);
     }
-}
+};
 
-export const getSports = async (search) =>{
-    try{
+export const getSports = async (search) => {
+    try {
         const sports = await Sport.findAll({
-            where : search ? {
-                [Op.or] : [
-                    {name: { [Op.like]: `%${search}%`}},
-                    {sport_id: { [Op.like]: `%${search}%`}}
-                ]
-            } : {}
+            where: search
+                ? {
+                      [Op.or]: [{ name: { [Op.like]: `%${search}%` } }, { sport_id: { [Op.like]: `%${search}%` } }],
+                  }
+                : {},
         });
 
-        if(!sports) generateError('Sports not found',404);
+        if (!sports) generateError('Sports not found', 404);
 
         return sports;
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        generateError(error.message,error.status);
+        generateError(error.message, error.status);
     }
-}
+};
 
-export const getSportById = async(id) =>{
-    try{
+export const getSportById = async (id) => {
+    try {
         const sport = await Sport.findByPk(id);
 
-        if(!sport) generateError('Sport not found',404);
+        if (!sport) generateError('Sport not found', 404);
 
         return sport;
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        generateError(error.message,error.status);
+        generateError(error.message, error.status);
     }
-}
+};
 
-export const updateSport = async(id,data) =>{
-    try{
-        const [updateRows] = await Sport.update(data,{
-            where:{
-                id: id
-            }
+export const updateSport = async (id, data) => {
+    try {
+        const [updateRows] = await Sport.update(data, {
+            where: {
+                id: id,
+            },
         });
 
         console.log(updateRows);
 
-        if(updateRows === 0) generateError('Sport not updated',400);
+        if (updateRows === 0) generateError('Sport not updated', 400);
 
         const newSport = getSportById(id);
 
         return newSport;
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        generateError(error.message,error.status);
+        generateError(error.message, error.status);
     }
-}
+};
 
-export const deleteSport = async(id) =>{
-    try{
+export const deleteSport = async (id) => {
+    try {
         const sport = await Sport.destroy({
             where: {
-                id: id
-            }
+                id: id,
+            },
         });
 
         return sport;
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        generateError(error.message,error.status);
+        generateError(error.message, error.status);
     }
-}
+};

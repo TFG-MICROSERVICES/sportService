@@ -5,13 +5,13 @@ export const sportUpdateSchema = Joi.object({
         'string.base': 'name must be string',
         'string.max': 'name must be at most 255 characters',
     }),
-    description: Joi.string().allow(null, "").optional().messages({
+    description: Joi.string().allow(null, '').optional().messages({
         'string.base': 'description must be string',
     }),
     status: Joi.boolean().optional().messages({
         'boolean.base': 'status must be boolean',
     }),
-    image: Joi.string().allow(null, "").optional().messages({
+    image: Joi.string().allow(null, '').optional().messages({
         'string.base': 'image must be string',
     }),
     minimum_players: Joi.number().optional().messages({
