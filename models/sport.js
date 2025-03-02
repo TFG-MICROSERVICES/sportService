@@ -31,12 +31,6 @@ export const Sport = database.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        sport_id: {
-            type: DataTypes.STRING,
-            max: 255,
-            unique: true,
-            allowNull: false,
-        },
     },
     {
         tableName: 'Sports',

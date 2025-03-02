@@ -4,7 +4,6 @@ import { generateError } from '../../utils/generateError.js';
 
 export const createSport = async (data) => {
     try {
-        console.log(data);
         const sport = await Sport.create(data);
 
         if (!sport) generateError('Error creating user', 500);
@@ -21,7 +20,7 @@ export const getSports = async (search) => {
         const sports = await Sport.findAll({
             where: search
                 ? {
-                      [Op.or]: [{ name: { [Op.like]: `%${search}%` } }, { sport_id: { [Op.like]: `%${search}%` } }],
+                      [Op.or]: [{ name: { [Op.like]: `%${search}%` } }],
                   }
                 : {},
         });
