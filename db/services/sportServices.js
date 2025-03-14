@@ -18,6 +18,9 @@ export const createSport = async (data) => {
 export const getSports = async (search) => {
     try {
         const sports = await Sport.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt'],
+            },
             where: search
                 ? {
                       [Op.or]: [{ name: { [Op.like]: `%${search}%` } }],
@@ -36,7 +39,11 @@ export const getSports = async (search) => {
 
 export const getSportById = async (id) => {
     try {
-        const sport = await Sport.findByPk(id);
+        const sport = await Sport.findByPk(id, {
+            attributes: {
+                exclude: ['createdAt', 'updatedAt'],
+            },
+        });
 
         if (!sport) generateError('Sport not found', 404);
 
