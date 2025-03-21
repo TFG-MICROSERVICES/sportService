@@ -11,7 +11,7 @@ import { validateApiKey } from '../middlewares/validateApiKey.js';
 const router = express.Router();
 
 //POST http://localhost:3003/sport
-router.post('/register', validateApiKey, createSportController);
+router.post('/', validateApiKey, createSportController);
 
 //GET http://localhost:3003/sport?search=
 router.get('/', validateApiKey, getSportsController);
