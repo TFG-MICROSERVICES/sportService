@@ -4,9 +4,20 @@ import { generateError } from '../../utils/generateError.js';
 
 export const createSport = async (data) => {
     try {
+        // Verificar si ya existe un deporte con el mismo nombre
+        const existingSport = await Sport.findOne({
+            where: {
+                name: data.name
+            }
+        });
+
+        if (existingSport) {
+            generateError('Este deporte ya está registrado', 400);
+        }
+
         const sport = await Sport.create(data);
 
-        if (!sport) generateError('Error creating user', 500);
+        if (!sport) generateError('Error al crear el deporte', 500);
 
         return sport;
     } catch (error) {

@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "server": "node server.js"
+    "server": "node server.js",
+    "test": "mocha test/**/*.js"
   },
   "keywords": [],
   "author": "David Serrano Domínguez",
@@ -23,6 +23,9 @@
     "joi": "^17.13.3",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "chai": "^5.2.0",
+    "mocha": "^11.3.0",
+    "supertest": "^7.1.1"
   }
 }

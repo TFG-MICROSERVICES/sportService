@@ -10,14 +10,14 @@ import { validateApiKey } from '../middlewares/validateApiKey.js';
 
 const router = express.Router();
 
-//POST http://localhost:3003/sport
-router.post('/', validateApiKey, createSportController);
-
 //GET http://localhost:3003/sport?search=
 router.get('/', validateApiKey, getSportsController);
 
 //GET http://localhost:3003/sport/:id
 router.get('/:id', validateApiKey, getSportByIdController);
+
+//POST http://localhost:3003/sport
+router.post('/', validateApiKey, createSportController);
 
 //PUT http://localhost:3003/sport/:id
 router.put('/:id', validateApiKey, updateSportController);

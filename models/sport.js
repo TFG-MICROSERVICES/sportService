@@ -23,10 +23,6 @@ export const Sport = database.define(
             allowNull: false,
             defaultValue: false,
         },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         minimum_players: {
             type: DataTypes.INTEGER,
             allowNull: false,

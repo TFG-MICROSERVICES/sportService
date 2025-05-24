@@ -11,7 +11,7 @@ export const createSportController = async (req, res, next) => {
         const sport = await createSport(validate);
 
         res.status(201).json({
-            message: 'Sport created successfully',
+            message: 'Deporte registrado correctamente',
             sport,
         });
     } catch (error) {
@@ -27,7 +27,7 @@ export const getSportsController = async (req, res, next) => {
         console.log(sports);
 
         res.status(200).json({
-            message: 'Sports found',
+            message: 'Deportes encontrados',
             sports,
         });
     } catch (error) {

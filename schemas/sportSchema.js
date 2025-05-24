@@ -2,23 +2,23 @@ import Joi from 'joi';
 
 export const sportSchema = Joi.object({
     name: Joi.string().max(255).required().messages({
-        'any.required': 'name is required',
-        'string.base': 'name must be string',
-        'string.max': 'name must be at most 255 characters',
+        'any.required': 'el nombre es requerido',
+        'string.base': 'el nombre debe ser una cadena de texto',
+        'string.max': 'el nombre debe tener como máximo 255 caracteres',
     }),
     description: Joi.string().allow(null, '').messages({
-        'any.required': 'description is required',
-        'string.base': 'description must be string',
+        'any.required': 'la descripción es requerida',
+        'string.base': 'la descripción debe ser una cadena de texto',
     }),
     status: Joi.boolean().default(false).required().messages({
-        'any.required': 'status is required',
-        'boolean.base': 'status must be boolean',
+        'any.required': 'el estado es requerido',
+        'boolean.base': 'el estado debe ser booleano',
     }),
     image: Joi.string().allow(null, '').messages({
-        'string.base': 'image must be string',
+        'string.base': 'la imagen debe ser una cadena de texto',
     }),
     minimum_players: Joi.number().required().messages({
-        'any.required': 'minimum_players is required',
-        'number.base': 'minimum_players must be number',
+        'any.required': 'el número mínimo de jugadores es requerido',
+        'number.base': 'el número mínimo de jugadores debe ser un número',
     }),
 });
